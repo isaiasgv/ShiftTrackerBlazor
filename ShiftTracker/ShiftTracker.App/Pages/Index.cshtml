@@ -1,0 +1,138 @@
+﻿@page "/"
+@inject HttpClient client
+
+@functions{
+    List<Shift> history { get; set; } = new List<Shift>();
+    protected Shift ConfiguredShift { get; set; }
+    private bool ShowShiftEditor { get; set; } = false;
+    private bool ShowShiftAdd { get; set; } = false;
+    protected async override Task OnInitAsync()
+    {
+
+        //history = await client.GetJsonAsync<List<Shift>>("api/shifthistory");
+
+
+
+    }
+
+    protected int NewID()
+    {
+        if (history == null || history.Count == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            var lastShift = history.Last();
+
+            return lastShift.Id + 1;
+        }
+    }
+
+   
+    protected void SaveEditedShift()
+    {
+        if(ConfiguredShift.Id == -1)
+        {
+            ConfiguredShift.Id = NewID();
+            history.Add(ConfiguredShift);
+        }
+        else
+        {
+            var index = history.FindIndex(x => x.Id == ConfiguredShift.Id);
+            history[index] = ConfiguredShift;
+        }
+
+        ShowShiftEditor = false;
+        StateHasChanged();
+
+    }
+
+    protected void AddNewShiftBtnClick()
+    {
+        ConfiguredShift = new Shift();
+        ShowShiftAdd = true;
+        StateHasChanged();
+    }
+
+
+
+    protected void HideShiftEditorBtnClick()
+    {
+        ShowShiftAdd = false;
+        ShowShiftEditor = false;
+        StateHasChanged();
+    }
+
+    protected void EditShiftBtnClick(Shift shift)
+    {
+        ConfiguredShift = shift;
+        ShowShiftEditor = true;
+        StateHasChanged();
+    }
+
+        }
+
+<div class="container is-widescreen">
+    <div class="row dashboard-header-div ">
+        <div class="col-9">
+            <h1>Recent Shifts</h1>
+        </div>
+        <div class="col-3">
+            <form class="form-inline my-2 my-lg-0" style="float:right;">
+
+                <button onclick="@(() => EditShiftBtnClick(new Shift()))" class="btn btn-outline-primary my-2 my-sm-0 add-shift-btn" type="button"><i class="fas fa-plus-square"></i></button>
+            </form>
+        </div>
+        </div>
+
+    <div class="row">
+       
+
+        @if (ShowShiftEditor)
+        {
+            <ShiftEditorComponent Title="Shift Editor" Shift="@ConfiguredShift" OnCancel="@HideShiftEditorBtnClick" OnConfirm="@SaveEditedShift"></ShiftEditorComponent>
+        }
+
+        @if (history.Count < 0 || history == null)
+        {
+
+        }
+        else
+        {
+
+            @foreach (var shift in history.Select((v, i) => new { v, i }))
+            {
+                <div class="card col-12 shift-list-rest " onclick="@(() => EditShiftBtnClick(shift.v))">
+                    <div class="div-shift-list-res">
+                        <div class="card-header">
+                            <h5 class="card-title">@shift.v.Name</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@shift.v.Description</p>
+                            <p class="card-text">Total Hours: @shift.v.TotalHours</p>
+
+                            <div class="field is-grouped is-grouped-right">
+                                <p class="control">
+                                    <a onclick="" class="button is-link">
+                                        Edit
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+

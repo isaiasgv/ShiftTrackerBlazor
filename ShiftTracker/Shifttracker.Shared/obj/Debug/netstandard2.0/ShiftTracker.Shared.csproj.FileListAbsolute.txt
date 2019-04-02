@@ -1,0 +1,9 @@
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\bin\Debug\netstandard2.0\ShiftTracker.Shared.deps.json
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\bin\Debug\netstandard2.0\ShiftTracker.Shared.dll
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\bin\Debug\netstandard2.0\ShiftTracker.Shared.pdb
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\obj\Debug\netstandard2.0\ShiftTracker.Shared.csproj.CoreCompileInputs.cache
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\obj\Debug\netstandard2.0\ShiftTracker.Shared.AssemblyInfoInputs.cache
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\obj\Debug\netstandard2.0\ShiftTracker.Shared.AssemblyInfo.cs
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\obj\Debug\netstandard2.0\ShiftTracker.Shared.dll
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\obj\Debug\netstandard2.0\ShiftTracker.Shared.pdb
+D:\Development\Repos\NativoPlus.ShiftTracker\ShiftTracker\Shifttracker.Shared\obj\Debug\netstandard2.0\ShiftTracker.Shared.csprojAssemblyReference.cache

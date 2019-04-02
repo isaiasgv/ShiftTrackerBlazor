@@ -1,0 +1,25 @@
+﻿body {
+}
+
+.add-shift-btn {
+    font-size: 2rem;
+    border-radius: .8rem;
+    width: 5rem;
+}
+
+.shift-list-rest {
+    margin-bottom: 15px;
+    
+}
+
+.div-shift-list-res {
+    padding: 15px;
+}
+
+.dashboard-header-div {
+    padding:20px;
+}
+
+.modal-display{
+    display:block
+}

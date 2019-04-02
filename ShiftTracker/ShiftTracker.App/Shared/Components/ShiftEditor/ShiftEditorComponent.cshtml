@@ -1,0 +1,75 @@
+﻿@using Microsoft.JSInterop;
+@inject IJSRuntime JsRuntime
+@* This Component will let the user add/edit a shift class.
+    It will recive a new obj end will return the modifi obj.
+    If no obj provided it will use the defult one()obj with null values*@
+@functions{
+
+  
+    [Parameter] protected String Title { get; set; } = "Shift Editor";
+    [Parameter] protected Action OnCancel { get; set; }
+    [Parameter] protected Action OnConfirm { get; set; }
+    [Parameter]  Shift Shift { get; set; } = new Shift();
+
+
+    protected override async Task OnAfterRenderAsync()
+    {
+        //await JSRuntime.Current.InvokeAsync<string>("modalhandler.handler");
+    }
+}
+
+<div class="modal fade show modal-display" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">@Title</h5>
+                @*<button type="button" onclick="@OnCancel" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>*@
+            </div>
+            <div class="modal-body">
+                <form>
+
+
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-4 col-form-label">Title</label>
+                        <div class="col-sm-8">
+                            <input bind="@Shift.Name" type="text" class="form-control" id="colFormLabel" placeholder="Type a title for the shift" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-4 col-form-label">Description</label>
+                        <div class="col-sm-8">
+                            <input type="text" bind="@Shift.Description" class="form-control" id="colFormLabel" placeholder="What did your work on this time..." />
+                        </div>
+                    </div>
+
+                    @* We will aske user for start and end date and time *@
+
+                    <div class="form-group row">
+                        <label for="example-datetime-local-input" class="col-sm-4 col-form-label">Start Time</label>
+
+                        <div class="col-sm-8">
+                            <input class="col-sm-12 form-control" bind="@Shift.StartTime" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-datetime-local-input" class="col-sm-4 col-form-label">End Time</label>
+
+                        <div class="col-sm-8">
+                            <input class="col-sm-12 form-control" bind="@Shift.EndTime" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input" />
+                        </div>
+                    </div>
+
+
+                </form>
+              
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="@OnCancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" onclick="@OnConfirm" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
